@@ -5,7 +5,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions"
 import getUserProfile from "@/libs/getUserProfile"
 import { useSearchParams } from "next/navigation"
 import { useState } from "react"
-import { Dayjs } from "dayjs"
+import dayjs,{ Dayjs } from "dayjs"
 import { AppDispatch } from "@/redux/store"
 import { useDispatch } from "react-redux"
 import { BookingItem } from "../../../interface"
@@ -30,7 +30,7 @@ export default function Bookings(){
                 nameLastname: nameLastName,
                 tel: tel,
                 venue: venue,
-                bookDate:(pickupDate).format("YYYY/MM/DD"),
+                bookDate:dayjs(pickupDate).format("DD/MM/YYYY"),
             }
             dispatch(addBooking(item))
         }
@@ -59,7 +59,7 @@ export default function Bookings(){
             
             <div className="w-fit space-y-2">
                 <TextField name="Name-Lastname" label="Name-Lastname" variant="standard" value={nameLastName} onChange={handleNameChange}/>
-                <TextField name="Contact-Number" label="Contact-Number" variant="standard" value={nameLastName} onChange={handleNameChange} />
+                <TextField name="Contact-Number" label="Contact-Number" variant="standard" value={nameLastName} onChange={handleTelChange} />
                 <div className="text-md text-left text-gray-600">Pick-Up Date and Location</div>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker

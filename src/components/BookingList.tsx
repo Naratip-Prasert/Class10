@@ -14,7 +14,7 @@ export default function BookingList(){
         {
                 venueItems.length == 0? 'No Venue Booking': venueItems.map((bookingItems: BookingItem) => (
                 <div className="text-black bg-slate-200 rounded px-5 mx-5 py-2 my-2">
-                    key={bookingItems.venue}
+                    {bookingItems.venue}
                         <div className="text-xl">{bookingItems.nameLastname}</div>
                         <div className="text-xl">{bookingItems.tel}</div>
                         <div className="text-xl">{bookingItems.bookDate}
