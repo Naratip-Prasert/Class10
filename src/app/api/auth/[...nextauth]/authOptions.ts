@@ -12,11 +12,11 @@ export const authOptions: AuthOptions = {
             },
             async authorize(credentials,req) {
                 if (!credentials) return null;
-                const user = await userLogin(credentials.email, credentials.password);
+                const user = await userLogin(credentials.email, credentials.password)
                 if(user){
-                    return user;
+                    return user
                 }else{
-                    return null;
+                    return null
                 }
     
             },
@@ -27,7 +27,7 @@ export const authOptions: AuthOptions = {
         async jwt({ token, user }) {
             return { ...token, ...user };
         },
-        async session({ session, token }) {
+        async session({ session, token, user }) {
             session.user = token as any;
             return session;
         }

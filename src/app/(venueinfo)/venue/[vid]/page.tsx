@@ -1,5 +1,6 @@
 import Image from "next/image"
 import getVenue from "@/libs/getVenue"
+import Link from "next/link"
 
 
 export default async function VenueDetaiPage({params}:{params:{vid:string}}) {
@@ -29,7 +30,14 @@ export default async function VenueDetaiPage({params}:{params:{vid:string}}) {
                 <div className="text-md mx-5">Postalcode: { venueDetai.data.postalcode  }</div>
                 <div className="text-md mx-5">Tel: { venueDetai.data.tel  }</div>
                 <div className="text-md mx-5">Daily Rate: { venueDetai.data.dailyrate }</div>
+                
+                <Link href={`/booking?id=${params.vid}$name=${venueDetai.data.name}`}>
+                <button name='Book Venue' className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2
+                        text-white shadow-sm">Make Venue
+                </button>  
+                </Link>
                 </div>
+
                 
             </div>
         </main>
