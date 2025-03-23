@@ -2,6 +2,7 @@
 import { AppDispatch, useAppSelector } from "@/redux/store"
 import {  useDispatch  } from "react-redux"
 import  { removeBooking } from "@/redux/features/bookSlice"
+import { BookingItem } from "../../interface"
  
 export default function BookingList(){
 
@@ -11,7 +12,7 @@ export default function BookingList(){
         <>
     
         {
-            venueItems.map((bookingItems)=>(
+                venueItems.length == 0? 'No Venue Booking': venueItems.map((bookingItems: BookingItem) => (
                 <div className="text-black bg-slate-200 rounded px-5 mx-5 py-2 my-2">
                     key={bookingItems.venue}
                         <div className="text-xl">{bookingItems.nameLastname}</div>
